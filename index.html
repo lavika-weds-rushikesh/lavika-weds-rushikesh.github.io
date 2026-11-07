@@ -61,7 +61,7 @@ html[lang="te"] .heading{line-height:1.35}
   --ink-soft:  color-mix(in srgb, var(--ink-base) 66%, var(--bg));
 }
 /* Themes derived from the four Canva 'Invitation' templates — colours only; content & layout unchanged.
-   --primary = dominant colour, --accent = gold, --bg = paper, --ink-base = text, --deep = dates/toran/emblem band. */
+   --primary = dominant colour, --accent = gold, --bg = paper, --ink-base = text, --deep = dates / toran flowers. */
 :root[data-theme="goldvintage"]{ --primary:#0E4A3A; --accent:#BE9A42; --bg:#F6F1E4; --ink-base:#23281F; --deep:#0E4A3A; } /* Gold Vintage Indian: emerald + gold */
 :root[data-theme="festive"]    { --primary:#64173B; --accent:#C9A24C; --bg:#F6EAD6; --ink-base:#2E1020; --deep:#64173B; } /* Purple & Yellow Festive: wine + gold */
 :root[data-theme="royalred"]   { --primary:#7E1210; --accent:#C6973C; --bg:#F4E8D2; --ink-base:#2A0E0C; --deep:#7E1210; } /* Gold & Red Royal: deep red + gold */
@@ -110,10 +110,10 @@ a{color:inherit;text-decoration:none}
 .overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;
   padding:calc(1.5rem + env(safe-area-inset-top)) 1.1rem calc(7vh + env(safe-area-inset-bottom));
   background:#17110d center top/cover no-repeat;transition:opacity .6s ease}
-:root[data-theme="goldvintage"] .overlay{background-image:url('images/theme-goldvintage.png')}
-:root[data-theme="festive"]     .overlay{background-image:url('images/theme-festive.png')}
-:root[data-theme="royalred"]    .overlay{background-image:url('images/theme-royalred.png')}
-:root[data-theme="purplegold"]  .overlay{background-image:url('images/theme-purplegold.png')}
+:root[data-theme="goldvintage"] .overlay{background-image:url('images/theme-goldvintage.jpg')}
+:root[data-theme="festive"]     .overlay{background-image:url('images/theme-festive.jpg')}
+:root[data-theme="royalred"]    .overlay{background-image:url('images/theme-royalred.jpg')}
+:root[data-theme="purplegold"]  .overlay{background-image:url('images/theme-purplegold.jpg')}
 .overlay.hide{opacity:0;pointer-events:none}
 .splash{width:100%;display:flex;justify-content:center}
 /* first page: only two translucent language pills, low over the art */
@@ -123,13 +123,7 @@ a{color:inherit;text-decoration:none}
   background:rgba(14,9,7,.46);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
   box-shadow:0 6px 18px rgba(0,0,0,.4);transition:border-color .2s,transform .15s,box-shadow .2s,background .2s}
 .lang-btn:hover{border-color:var(--gold-hi);background:rgba(14,9,7,.62);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.5)}
-.gate{display:none;max-width:var(--card-w);width:100%}
-.gate.show{display:block}
-.gate .paper{padding:2.6rem 1.6rem}
 
-.emblem{width:96px;height:96px;margin:0 auto}
-.emblem svg{width:100%;height:100%}
-.splash .emblem{width:110px;height:110px;margin-bottom:1rem}
 
 .wrap{max-width:var(--card-w);margin:0 auto;padding:1.6rem 1rem 3rem}
 .paper{position:relative;background:linear-gradient(180deg,var(--paper-1),var(--paper-2));
@@ -219,8 +213,8 @@ a{color:inherit;text-decoration:none}
 .arch-cap svg{width:100%;height:100%;display:block}
 /* decorative foot band (Gold Vintage & Royal Red) */
 .foot-band{height:68px;background-size:cover;background-position:center;display:none}
-:root[data-theme="goldvintage"] .foot-band{background-image:url('images/band-gold.png');display:block}
-:root[data-theme="royalred"]    .foot-band{background-image:url('images/band-red.png');display:block}
+:root[data-theme="goldvintage"] .foot-band{background-image:url('images/band-gold.jpg');display:block}
+:root[data-theme="royalred"]    .foot-band{background-image:url('images/band-red.jpg');display:block}
 
 .fab-wrap{position:fixed;right:calc(1rem + env(safe-area-inset-right));bottom:calc(1rem + env(safe-area-inset-bottom));
   z-index:40;display:none;gap:.7rem;align-items:flex-end}
@@ -229,17 +223,17 @@ a{color:inherit;text-decoration:none}
   border:1.5px solid var(--gold);color:var(--gold-hi);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:transform .15s}
 .fab:hover{transform:translateY(-2px)}
 .fab .glyph{font-family:var(--f-label);font-size:1.3rem}
-.lang-pop{position:absolute;bottom:64px;right:0;background:var(--ivory);border:1.5px solid var(--gold-lo);border-radius:12px;
-  padding:.4rem;min-width:140px;display:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.lang-pop.show{display:block}
-.lang-pop button{display:block;width:100%;text-align:left;padding:.6rem .8rem;border-radius:8px;font-family:var(--f-label);letter-spacing:.06em;color:var(--emerald-2)}
+/* shared popover shell (language + theme pickers) */
+.lang-pop,.theme-pop{position:absolute;bottom:64px;right:0;background:var(--ivory);border:1.5px solid var(--gold-lo);
+  border-radius:12px;padding:.4rem;display:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.lang-pop{min-width:140px}
+.theme-pop{min-width:200px;max-height:62vh;overflow:auto}
+.lang-pop.show,.theme-pop.show{display:block}
+.lang-pop button,.theme-pop button{width:100%;text-align:left;border-radius:8px;font-family:var(--f-label);color:var(--emerald-2)}
+.lang-pop button{display:block;padding:.6rem .8rem;letter-spacing:.06em}
+.theme-pop button{display:flex;align-items:center;gap:.6rem;padding:.5rem .7rem;letter-spacing:.03em;font-size:.88rem}
 .lang-pop button:hover{background:rgba(200,160,74,.15)}
 .lang-pop button.active{background:var(--emerald-2);color:var(--gold-hi)}
-.theme-pop{position:absolute;bottom:64px;right:0;background:var(--ivory);border:1.5px solid var(--gold-lo);border-radius:12px;
-  padding:.4rem;min-width:200px;max-height:62vh;overflow:auto;display:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.theme-pop.show{display:block}
-.theme-pop button{display:flex;align-items:center;gap:.6rem;width:100%;text-align:left;padding:.5rem .7rem;border-radius:8px;
-  font-family:var(--f-label);letter-spacing:.03em;color:var(--emerald-2);font-size:.88rem}
 .theme-pop button:hover,.theme-pop button.active{background:rgba(200,160,74,.18)}
 .theme-pop .sw{display:inline-flex;gap:3px;flex:0 0 auto}
 .theme-pop .sw i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
@@ -260,7 +254,7 @@ a{color:inherit;text-decoration:none}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
 
-@media (max-width:480px){.heading{font-size:2.1rem}.person-name{font-size:2.4rem}.sec{padding:1.8rem 1.1rem}.gate .paper{padding:2rem 1.1rem}}
+@media (max-width:480px){.heading{font-size:2.1rem}.person-name{font-size:2.4rem}.sec{padding:1.8rem 1.1rem}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.fab.playing .eq span{animation:none;height:70%}.overlay{transition:none}}
 </style>
 </head>
@@ -405,8 +399,6 @@ const I18N = {
   en:{
     glyph:'A',
     invocation:'॥ Sri Ganeshaya Namah ॥',
-    volume:'Turn your volume up',
-    open:'Open the invitation',
     weddingInvitation:'Wedding Invitation',
     nameA:'Rushikesh', nameB:'Lavika (Aparna)',
     date:'Saturday, 21 November 2026',
@@ -414,7 +406,7 @@ const I18N = {
     cdLabel:'Muhurtham in',
     days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
     begun:'The celebrations have begun',
-    viewEvents:'View events', getDirections:'Get directions',
+    getDirections:'Get directions',
     theCouple:'The Couple',
     blessing:'With the blessings of the Almighty and our elders, we joyfully invite you and your family to the wedding of our beloved children.',
     theBride:'The Bride', bridePrefix:'Chi. Sow.', bride:'Lavika (Aparna)', brideParents:'daughter of Smt. Pramila & Sri. Gangareddy',
@@ -435,8 +427,6 @@ const I18N = {
   te:{
     glyph:'అ',
     invocation:'॥ శ్రీ గణేశాయ నమః ॥',
-    volume:'వాల్యూమ్ పెంచండి',
-    open:'ఆహ్వానాన్ని తెరవండి',
     weddingInvitation:'శుభ వివాహ ఆహ్వానం',
     nameA:'రుషికేశ్', nameB:'లవిక (అపర్ణ)',
     date:'శనివారం, 21 నవంబర్ 2026',
@@ -444,7 +434,7 @@ const I18N = {
     cdLabel:'ముహూర్తానికి ఇంకా',
     days:'రోజులు', hours:'గంటలు', minutes:'నిమిషాలు', seconds:'సెకన్లు',
     begun:'వేడుకలు మొదలయ్యాయి',
-    viewEvents:'కార్యక్రమాలు', getDirections:'దారి చూపించు',
+    getDirections:'దారి చూపించు',
     theCouple:'వధూవరులు',
     blessing:'దైవ కటాక్షంతో, పెద్దల ఆశీస్సులతో, మా ప్రియమైన పిల్లల వివాహానికి మిమ్మల్ని సకుటుంబ సపరివార సమేతంగా సాదరంగా ఆహ్వానిస్తున్నాము.',
     theBride:'వధువు', bridePrefix:'చి. సౌ.', bride:'లవిక (అపర్ణ)', brideParents:'శ్రీమతి ప్రమీల & శ్రీ గంగారెడ్డి గారి కుమార్తె',
@@ -471,15 +461,11 @@ const ICONS = {
   copy:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>`,
   link:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>`,
   wa:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.2.4-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.3.1.4.2.5.3.1.2.1.7-.1 1.2Z"/></svg>`,
-  headphones:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="7" rx="1.5"/><rect x="17" y="13" width="4" height="7" rx="1.5"/></svg>`,
-  bowl:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M8 7c0-1.5 1-2 1.5-3M12 6c0-1.5 1-2 1.5-3M16 7c0-1.5 1-2 1.5-3"/></svg>`,
-  music:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M9 17.5V6l11-2v9.5"/></svg>`,
   palette:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.8 1.4-1.5 0-.5-.3-.8-.6-1.2-.3-.3-.5-.7-.5-1.1 0-.8.7-1.4 1.6-1.4H15a6 6 0 0 0 6-6c0-4-4-6.8-9-6.8Z"/><circle cx="7.5" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="16.5" cy="11" r="1" fill="currentColor" stroke="none"/></svg>`,
   // Muhurtham → kalash (sacred pot: coconut + mango leaves + pot)
   kalash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.2" r="1.7"/><path d="M10.2 6C8 6 6.3 7 5.5 8.6M13.8 6c2.2 0 3.9 1 4.7 2.6"/><path d="M8.1 8.6h7.8l-.5 1.9a4 4 0 0 1-6.8 0L8.1 8.6Z"/><path d="M7.5 11.8C6.8 15.2 9.1 18.3 12 18.3s5.2-3.1 4.5-6.5"/></svg>`,
   // Reception → diya (oil lamp with flame)
   diya:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1 1-1.5 2-1.5 2.9a1.5 1.5 0 0 0 3 0C13.5 8 13 7 12 6Z"/><path d="M4 13.2c2.3 1.3 5.1 2 8 2s5.7-.7 8-2"/><path d="M5.3 12.6c.5 2.2 3.3 3.6 6.7 3.6s6.2-1.4 6.7-3.6c.2-.8-.5-1.2-1.4-1.2H6.7c-.9 0-1.6.4-1.4 1.2Z"/></svg>`,
-  emblem:`<svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="emg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--gold-hi)"/><stop offset=".55" style="stop-color:var(--gold)"/><stop offset="1" style="stop-color:var(--gold-lo)"/></linearGradient></defs><circle cx="50" cy="50" r="47" fill="none" stroke="url(#emg)" stroke-width="2.5"/><circle cx="50" cy="50" r="41" fill="none" style="stroke:var(--gold)" stroke-width="1" stroke-dasharray="2 3"/><path d="M50 20c-6 6-14 8-14 8 3 4 10 5 14 4 4 1 11 0 14-4 0 0-8-2-14-8Z" style="fill:var(--emerald-3)"/><path d="M42 30c-5 3-9 3-9 3 2 3 7 4 10 3" style="fill:var(--leaf)"/><path d="M58 30c5 3 9 3 9 3-2 3-7 4-10 3" style="fill:var(--leaf)"/><circle cx="50" cy="34" r="6" fill="url(#emg)"/><path d="M36 44c0-3 6-5 14-5s14 2 14 5c2 10-2 24-14 26-12-2-16-16-14-26Z" fill="url(#emg)"/><rect x="35" y="55" width="30" height="5" style="fill:var(--maroon)"/><path d="M50 62l2.5 4h-5Z" style="fill:var(--maroon)"/></svg>`,
   toran:`<svg viewBox="0 0 560 70" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="560" height="10" style="fill:var(--emerald-3)"/><rect x="0" y="9" width="560" height="2" style="fill:var(--gold)"/>__TORAN_LEAVES__</svg>`,
   diamond:`<svg viewBox="0 0 120 16" aria-hidden="true"><line x1="10" y1="8" x2="48" y2="8" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="30" cy="8" r="2" style="fill:var(--gold)"/><path d="M60 2l6 6-6 6-6-6Z" style="fill:var(--gold)"/><line x1="72" y1="8" x2="110" y2="8" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="90" cy="8" r="2" style="fill:var(--gold)"/></svg>`,
   scallop:`<svg viewBox="0 0 560 22" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="560" height="22" style="fill:var(--emerald-2)"/><path d="M0 0 __SCALLOP_PTS__ Z" style="fill:var(--gold)" opacity=".9"/></svg>`,
@@ -504,7 +490,7 @@ ICONS.scallop = ICONS.scallop.replace('__SCALLOP_PTS__',
   const dict=()=>I18N[lang];
 
   // fill inline SVGs once
-  // inject SVGs; give each a unique gradient id so duplicates (splash + hero emblem) don't collide
+  // inject SVGs; give each a unique gradient id so any duplicated SVG's gradients never collide
   $$('[data-svg]').forEach((el,i)=>{const k=el.dataset.svg; if(ICONS[k]) el.innerHTML=ICONS[k].replace(/emg/g,'emg'+i);});
 
   function calUrl(ev){const d=dict(),e=d.ev[ev.id];
