@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- [[SLOT: title]] -->
+<title>Rushikesh & Lavika (Aparna) Wedding</title>
+<meta name="description" content="You're invited to the wedding of Rushikesh & Lavika (Aparna).">
+<!-- Open Graph (for WhatsApp/link previews) — [[SLOT]] -->
+<meta property="og:title" content="Rushikesh & Lavika (Aparna) Wedding">
+<meta property="og:description" content="Join us to bless the couple.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Marcellus+SC&family=Pinyon+Script&family=Noto+Serif+Telugu:wght@400;600;700&family=Suranna&display=swap">
+<style>
+:root{
+  --emerald:#0c2a1c; --emerald-2:#123d28; --emerald-3:#1b5537;
+  --gold-lo:#8a6823; --gold:#c8a04a; --gold-hi:#f1d98f;
+  --marigold:#ef8a1d; --marigold-hi:#f3a93d; --maroon:#8b1d2c; --leaf:#2e7d4f;
+  --ivory:#fcf7ec; --ivory-2:#f3e9d2; --ink:#2a2214; --ink-soft:#6a5a3b;
+  /* semantic tokens — light themes map them to the light values; dark themes (red/purple) override them.
+     Panels (countdown/featured/fab) keep using --emerald-2/-3, overridden darker for dark themes. */
+  --paper-1:var(--ivory); --paper-2:var(--ivory-2); --card-bg:var(--ivory);
+  --text:var(--ink); --text-soft:var(--ink-soft); --head:var(--emerald-2); --date-c:var(--maroon);
+  --f-body:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --f-label:'Marcellus SC','Cormorant Garamond',serif;
+  --f-name:'Pinyon Script','Cormorant Garamond',cursive;
+  --f-te-body:'Noto Serif Telugu',serif;
+  --f-te-disp:'Suranna','Noto Serif Telugu',serif;
+  --name-size:clamp(3.3rem,16vw,4.7rem);
+  --body-size:1.2rem; --small:1rem; --lh:1.5; --track:.14em;
+  --card-w:560px;
+}
+html[lang="te"]{ --f-body:var(--f-te-body); --f-label:var(--f-te-body); --name-size:clamp(2.6rem,12vw,3.8rem); }
+html[lang="te"] .name,html[lang="te"] .amp-big,html[lang="te"] .person-name,html[lang="te"] .heading{font-family:var(--f-te-disp)}
+/* Telugu glyphs are tall — give stacked display text room so it doesn't overlap neighbours */
+html[lang="te"] .name{line-height:1.3}
+html[lang="te"] .amp-big{line-height:1.25}
+html[lang="te"] .person-name{line-height:1.45}
+html[lang="te"] .heading{line-height:1.35}
+
+/* ===== THEMES =====
+   Default :root above = Emerald & Gold (theme #1, unchanged).
+   Each theme below sets 5 base colours; the ramp tokens the design uses are
+   derived once here via color-mix, so a theme is one line. Tune hexes by eye. */
+:root[data-theme]{
+  --emerald:   color-mix(in srgb, var(--primary) 82%, #000);
+  --emerald-2: var(--primary);
+  --emerald-3: color-mix(in srgb, var(--primary) 84%, #fff);
+  --leaf:      color-mix(in srgb, var(--primary) 62%, #fff);
+  --gold-lo:   color-mix(in srgb, var(--accent) 68%, #000);
+  --gold:      var(--accent);
+  --gold-hi:   color-mix(in srgb, var(--accent) 48%, #fff);
+  --maroon:    var(--deep);
+  --marigold:  var(--deep);
+  --marigold-hi: color-mix(in srgb, var(--deep) 58%, #fff);
+  --ivory:     color-mix(in srgb, var(--bg) 52%, #fff);
+  --ivory-2:   var(--bg);
+  --ink:       var(--ink-base);
+  --ink-soft:  color-mix(in srgb, var(--ink-base) 66%, var(--bg));
+}
+/* Themes derived from the four Canva 'Invitation' templates — colours only; content & layout unchanged.
+   --primary = dominant colour, --accent = gold, --bg = paper, --ink-base = text, --deep = dates/toran/emblem band. */
+:root[data-theme="goldvintage"]{ --primary:#0E4A3A; --accent:#BE9A42; --bg:#F6F1E4; --ink-base:#23281F; --deep:#0E4A3A; } /* Gold Vintage Indian: emerald + gold */
+:root[data-theme="festive"]    { --primary:#64173B; --accent:#C9A24C; --bg:#F6EAD6; --ink-base:#2E1020; --deep:#64173B; } /* Purple & Yellow Festive: wine + gold */
+:root[data-theme="royalred"]   { --primary:#7E1210; --accent:#C6973C; --bg:#F4E8D2; --ink-base:#2A0E0C; --deep:#7E1210; } /* Gold & Red Royal: deep red + gold */
+:root[data-theme="purplegold"] { --primary:#5A2A5C; --accent:#B88A3C; --bg:#F7E3B0; --ink-base:#2E1730; --deep:#5A2A5C; } /* Purple & Golden: aubergine + gold */
+
+/* Dark themes: paper itself is the deep colour, text goes gold/cream (mirrors the templates' inner pages).
+   Panels (--emerald-2/-3) are set darker than the paper so the countdown/featured cards still read. */
+:root[data-theme="royalred"]{
+  --paper-1:#7c1210; --paper-2:#5c0d0b; --card-bg:#7f1715;
+  --text:#f2e6c8; --text-soft:#dcc088; --head:#edc65c; --date-c:#eccf7a;
+  --emerald-2:#4c0c0a; --emerald-3:#660f0d; --gold-hi:#f3dd9b;
+}
+:root[data-theme="purplegold"]{
+  --paper-1:#4f264d; --paper-2:#3a1939; --card-bg:#582b56;
+  --text:#f0e4c9; --text-soft:#d4bb8e; --head:#e8c560; --date-c:#e8ca78;
+  --emerald-2:#341832; --emerald-3:#4a2447; --gold-hi:#f3dd9b;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);font-size:var(--body-size);line-height:var(--lh);color:var(--text);
+  background:var(--emerald);background-image:radial-gradient(rgba(200,160,74,.10) 1px,transparent 1.2px);
+  background-size:22px 22px;min-height:100vh;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden;height:100vh}
+svg{display:block}
+button{font:inherit;cursor:pointer;color:inherit;background:none;border:none}
+a{color:inherit;text-decoration:none}
+
+.label{font-family:var(--f-label);letter-spacing:var(--track);text-transform:uppercase;color:var(--gold-lo);font-size:var(--small)}
+.invocation{font-family:var(--f-label);color:var(--date-c);letter-spacing:.06em;font-size:1.05rem}
+.name{font-family:var(--f-name);color:var(--head);font-size:var(--name-size);line-height:1}
+.amp-big{font-family:var(--f-name);color:var(--gold);font-size:calc(var(--name-size)*.6);line-height:1}
+.center{text-align:center}
+
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;font-family:var(--f-label);
+  letter-spacing:.08em;text-transform:uppercase;font-size:.9rem;padding:.7rem 1.4rem;
+  transition:transform .15s,box-shadow .2s,background .2s;border:1.5px solid var(--gold)}
+.btn svg{width:18px;height:18px}
+.btn--fill{background:var(--emerald-2);color:var(--gold-hi);box-shadow:0 2px 10px rgba(12,42,28,.25)}
+.btn--fill:hover{box-shadow:0 0 0 2px var(--gold-lo),0 4px 14px rgba(12,42,28,.35);transform:translateY(-1px)}
+.btn--out{background:transparent;color:var(--text);border-color:var(--gold-lo)}
+.btn--out:hover{background:rgba(200,160,74,.12);transform:translateY(-1px)}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+
+/* overlay — the selected theme's Canva invitation fills the whole start page */
+.overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;
+  padding:calc(1.5rem + env(safe-area-inset-top)) 1.1rem calc(7vh + env(safe-area-inset-bottom));
+  background:#17110d center top/cover no-repeat;transition:opacity .6s ease}
+:root[data-theme="goldvintage"] .overlay{background-image:url('images/theme-goldvintage.png')}
+:root[data-theme="festive"]     .overlay{background-image:url('images/theme-festive.png')}
+:root[data-theme="royalred"]    .overlay{background-image:url('images/theme-royalred.png')}
+:root[data-theme="purplegold"]  .overlay{background-image:url('images/theme-purplegold.png')}
+.overlay.hide{opacity:0;pointer-events:none}
+.splash{width:100%;display:flex;justify-content:center}
+/* first page: only two translucent language pills, low over the art */
+.lang-grid{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.lang-btn{font-family:var(--f-label);letter-spacing:.1em;font-size:1.05rem;color:#f4ead2;
+  border:1.5px solid var(--gold);border-radius:999px;padding:.7rem 1.8rem;min-width:132px;
+  background:rgba(14,9,7,.46);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  box-shadow:0 6px 18px rgba(0,0,0,.4);transition:border-color .2s,transform .15s,box-shadow .2s,background .2s}
+.lang-btn:hover{border-color:var(--gold-hi);background:rgba(14,9,7,.62);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.5)}
+.gate{display:none;max-width:var(--card-w);width:100%}
+.gate.show{display:block}
+.gate .paper{padding:2.6rem 1.6rem}
+
+.emblem{width:96px;height:96px;margin:0 auto}
+.emblem svg{width:100%;height:100%}
+.splash .emblem{width:110px;height:110px;margin-bottom:1rem}
+
+.wrap{max-width:var(--card-w);margin:0 auto;padding:1.6rem 1rem 3rem}
+.paper{position:relative;background:linear-gradient(180deg,var(--paper-1),var(--paper-2));
+  border:1px solid var(--gold-lo);border-radius:8px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.toran svg{width:100%;height:70px;display:block}
+.sec{padding:2.2rem 1.6rem;text-align:center}
+.rule{width:60%;height:1px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent)}
+.heading{font-family:var(--f-name);color:var(--head);font-size:2.6rem;line-height:1.1;font-weight:400}
+
+.hero .names{margin:.6rem 0 .3rem}
+.hero .date{font-family:var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--date-c);font-size:1.05rem;margin-top:.8rem}
+.hero .venue-line{color:var(--text-soft);margin-top:.3rem}
+.date{font-family:var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--date-c)}
+
+.countdown{background:linear-gradient(180deg,var(--emerald-3),var(--emerald-2));border:1.5px solid var(--gold);
+  border-radius:12px;padding:1.2rem 1rem;margin:1.6rem auto 0;max-width:420px;box-shadow:0 8px 24px rgba(12,42,28,.3)}
+.countdown .cd-label{font-family:var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);font-size:.95rem}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin-top:.8rem}
+.cd-num{font-family:var(--f-body);font-weight:700;font-size:2rem;color:var(--ivory)}
+.cd-unit{font-family:var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-size:.7rem;margin-top:.2rem}
+
+.couple-block{margin:1.2rem 0}
+.prefix{font-family:var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lo);font-size:1.1rem}
+.person-name{font-family:var(--f-name);color:var(--head);font-size:3rem;line-height:1.1}
+.parents{color:var(--text-soft);font-size:1rem;margin-top:.3rem}
+.blessing{font-style:italic;color:var(--text);max-width:40ch;margin:.8rem auto}
+.amp-div{font-family:var(--f-name);color:var(--gold);font-size:2.4rem;margin:.6rem 0}
+.grace{color:var(--date-c);font-style:italic;margin-top:.4rem}
+
+.events{display:flex;flex-direction:column;gap:1rem;margin-top:1.4rem;text-align:left}
+.event{display:flex;gap:1rem;align-items:flex-start;background:var(--card-bg);border:1px solid rgba(138,104,35,.45);border-radius:12px;padding:1.1rem}
+.event.featured{background:linear-gradient(180deg,var(--emerald-3),var(--emerald-2));border-color:var(--gold)}
+.event.featured .ev-name,.event.featured .ev-time{color:var(--gold-hi)}
+.event.featured .ev-date,.event.featured .ev-loc{color:var(--ivory-2)}
+.ev-badge{flex:0 0 auto;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;background:rgba(200,160,74,.1)}
+.ev-badge svg{width:26px;height:26px;color:var(--gold-lo)}
+.event.featured .ev-badge{background:rgba(241,217,143,.12)}
+.event.featured .ev-badge svg{color:var(--gold-hi)}
+.ev-name{font-family:var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--head);font-size:1.15rem}
+.ev-date{color:var(--text);font-size:1rem;margin-top:.15rem}
+.ev-time{font-weight:700;color:var(--date-c);font-size:1.3rem}
+.ev-loc{color:var(--text-soft);font-size:.95rem;margin:.15rem 0 .6rem}
+
+.venues{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.4rem}
+.venue-card{border:1px solid rgba(138,104,35,.45);border-radius:12px;padding:1.3rem 1.2rem;background:var(--card-bg)}
+.venue-ev{font-family:var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lo);font-size:.9rem}
+.venue-name{font-family:var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--head);font-size:1.25rem;margin:.3rem 0 .2rem}
+.venue-addr{color:var(--text);margin-bottom:1rem}
+
+.foot .diamond{width:120px;margin:0 auto 1rem}
+.foot .await{font-style:italic;color:var(--text);margin-bottom:.4rem}
+.foot .hosts{font-family:var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--head);font-size:1.15rem}
+.foot .fam{color:var(--text-soft)}
+.scallop svg{width:100%;height:22px;display:block}
+
+/* ===== landing-page frame ornaments (from the Canva inner pages) ===== */
+.hero{position:relative}
+.hero-inner{position:relative;z-index:1}
+.om-top{width:60px;height:56px;margin:0 auto 1rem;background:url('images/om-gold.png') center/contain no-repeat;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.mandala{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:360px;max-width:88%;z-index:0;opacity:.09;pointer-events:none}
+.mandala svg{width:100%;height:auto;color:var(--gold)}
+/* top corner flourishes */
+.paper::before,.paper::after{content:"";position:absolute;top:62px;width:112px;height:138px;
+  background-size:contain;background-repeat:no-repeat;pointer-events:none;z-index:4;opacity:.96}
+.paper::before{left:7px;background-position:top left}
+.paper::after{right:7px;transform:scaleX(-1)}
+:root[data-theme="goldvintage"] .paper::before,:root[data-theme="goldvintage"] .paper::after{background-image:url('images/orn-corner-gold.png')}
+:root[data-theme="festive"]     .paper::before,:root[data-theme="festive"]     .paper::after{background-image:url('images/orn-corner-festive.png')}
+:root[data-theme="royalred"]    .paper::before,:root[data-theme="royalred"]    .paper::after{background-image:url('images/orn-corner-red.png')}
+/* Purple & Golden uses a gold drape across the top instead of corner flourishes */
+:root[data-theme="purplegold"] .paper::before{left:0;right:0;top:0;width:100%;height:86px;background-image:url('images/drape-purple.png');background-position:top center;background-size:cover}
+:root[data-theme="purplegold"] .paper::after{display:none}
+/* hanging lanterns (Purple & Golden only — its inner page shows them) */
+.lantern{position:absolute;top:2px;width:42px;height:150px;z-index:3;pointer-events:none;display:none;
+  background:url('images/lantern-purple.png') top center/contain no-repeat}
+.lantern-l{left:16px}.lantern-r{right:16px}
+:root[data-theme="purplegold"] .lantern{display:block}
+/* Festive: wine paper with a cream temple-arch content panel (matches the template's inner page) */
+:root[data-theme="festive"] .paper{background:linear-gradient(180deg,#6a1a3f,#58122f);border:5px solid #4c0e28}
+:root[data-theme="festive"] .toran{display:none}
+.sec,.rule{position:relative;z-index:1}
+.arch-panel,.arch-cap{display:none}
+:root[data-theme="festive"] .arch-panel{display:block;position:absolute;left:15px;right:15px;top:24px;bottom:13px;
+  background:linear-gradient(180deg,var(--ivory),var(--ivory-2));border:1.5px solid var(--gold-lo);border-top:none;z-index:0}
+:root[data-theme="festive"] .arch-cap{display:block;position:absolute;left:15px;right:15px;top:24px;height:120px;z-index:0;pointer-events:none}
+.arch-cap svg{width:100%;height:100%;display:block}
+/* decorative foot band (Gold Vintage & Royal Red) */
+.foot-band{height:68px;background-size:cover;background-position:center;display:none}
+:root[data-theme="goldvintage"] .foot-band{background-image:url('images/band-gold.png');display:block}
+:root[data-theme="royalred"]    .foot-band{background-image:url('images/band-red.png');display:block}
+
+.fab-wrap{position:fixed;right:calc(1rem + env(safe-area-inset-right));bottom:calc(1rem + env(safe-area-inset-bottom));
+  z-index:40;display:none;gap:.7rem;align-items:flex-end}
+.fab-wrap.show{display:flex}
+.fab{width:54px;height:54px;border-radius:50%;background:linear-gradient(180deg,var(--emerald-3),var(--emerald-2));
+  border:1.5px solid var(--gold);color:var(--gold-hi);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:transform .15s}
+.fab:hover{transform:translateY(-2px)}
+.fab .glyph{font-family:var(--f-label);font-size:1.3rem}
+.lang-pop{position:absolute;bottom:64px;right:0;background:var(--ivory);border:1.5px solid var(--gold-lo);border-radius:12px;
+  padding:.4rem;min-width:140px;display:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.lang-pop.show{display:block}
+.lang-pop button{display:block;width:100%;text-align:left;padding:.6rem .8rem;border-radius:8px;font-family:var(--f-label);letter-spacing:.06em;color:var(--emerald-2)}
+.lang-pop button:hover{background:rgba(200,160,74,.15)}
+.lang-pop button.active{background:var(--emerald-2);color:var(--gold-hi)}
+.theme-pop{position:absolute;bottom:64px;right:0;background:var(--ivory);border:1.5px solid var(--gold-lo);border-radius:12px;
+  padding:.4rem;min-width:200px;max-height:62vh;overflow:auto;display:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.theme-pop.show{display:block}
+.theme-pop button{display:flex;align-items:center;gap:.6rem;width:100%;text-align:left;padding:.5rem .7rem;border-radius:8px;
+  font-family:var(--f-label);letter-spacing:.03em;color:var(--emerald-2);font-size:.88rem}
+.theme-pop button:hover,.theme-pop button.active{background:rgba(200,160,74,.18)}
+.theme-pop .sw{display:inline-flex;gap:3px;flex:0 0 auto}
+.theme-pop .sw i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
+#themeFab svg{width:24px;height:24px}
+.eq{display:flex;gap:3px;align-items:flex-end;height:22px}
+.eq span{width:4px;background:var(--gold-hi);border-radius:2px;height:40%}
+.fab.playing .eq span{animation:bounce .9s ease-in-out infinite}
+.fab.playing .eq span:nth-child(2){animation-delay:.2s}
+.fab.playing .eq span:nth-child(3){animation-delay:.4s}
+.fab.playing .eq span:nth-child(4){animation-delay:.1s}
+@keyframes bounce{0%,100%{height:30%}50%{height:100%}}
+
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--emerald-2);
+  color:var(--gold-hi);padding:.7rem 1.2rem;border-radius:999px;border:1px solid var(--gold);font-family:var(--f-label);
+  letter-spacing:.06em;font-size:.85rem;opacity:0;pointer-events:none;transition:.3s;z-index:60}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:480px){.heading{font-size:2.1rem}.person-name{font-size:2.4rem}.sec{padding:1.8rem 1.1rem}.gate .paper{padding:2rem 1.1rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.fab.playing .eq span{animation:none;height:70%}.overlay{transition:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- ============ OVERLAY (splash → gate) ============ -->
+<div class="overlay" id="overlay">
+  <div class="splash" id="splash">
+    <div class="lang-grid">
+      <button class="lang-btn" data-lang="en">English</button>
+      <button class="lang-btn" data-lang="te">తెలుగు</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ MAIN INVITATION ============ -->
+<div class="wrap">
+  <div class="paper">
+    <div class="arch-cap" aria-hidden="true"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M0 40 L0 0 L100 0 L100 40 Q74 40 50 3 Q26 40 0 40 Z" fill="#6a1a3f"/><path d="M0 40 Q26 40 50 3 Q74 40 100 40" fill="none" stroke="var(--gold-lo)" stroke-width="0.7"/></svg></div>
+    <div class="arch-panel" aria-hidden="true"></div>
+    <div class="toran" data-svg="toran"></div>
+
+    <section class="sec hero reveal">
+      <div class="mandala" data-svg="mandala" aria-hidden="true"></div>
+      <div class="lantern lantern-l" aria-hidden="true"></div>
+      <div class="lantern lantern-r" aria-hidden="true"></div>
+      <div class="hero-inner">
+      <div class="om-top" aria-hidden="true"></div>
+      <p class="invocation" data-t="invocation"></p>
+      <p class="label" data-t="weddingInvitation" style="margin-top:.6rem"></p>
+      <p class="names" style="margin:.6rem 0">
+        <span class="name" data-t="nameA"></span><br><span class="amp-big">&amp;</span><br><span class="name" data-t="nameB"></span>
+      </p>
+      <p class="date" data-t="date"></p>
+      <p class="venue-line" data-t="venueShort"></p>
+
+      <div class="countdown" id="countdown">
+        <div class="cd-label" data-t="cdLabel"></div>
+        <div class="cd-grid">
+          <div><div class="cd-num" id="cd-d">00</div><div class="cd-unit" data-t="days"></div></div>
+          <div><div class="cd-num" id="cd-h">00</div><div class="cd-unit" data-t="hours"></div></div>
+          <div><div class="cd-num" id="cd-m">00</div><div class="cd-unit" data-t="minutes"></div></div>
+          <div><div class="cd-num" id="cd-s">00</div><div class="cd-unit" data-t="seconds"></div></div>
+        </div>
+      </div>
+      </div>
+
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="sec couple reveal">
+      <p class="label" data-t="theCouple"></p>
+      <p class="blessing" data-t="blessing"></p>
+      <div class="couple-block">
+        <p class="label" data-t="theBride" style="color:var(--gold-lo)"></p>
+        <p class="person-name"><span class="prefix" data-t="bridePrefix"></span> <span data-t="bride"></span></p>
+        <p class="parents" data-t="brideParents"></p>
+      </div>
+      <div class="amp-div">&amp;</div>
+      <div class="couple-block">
+        <p class="label" data-t="theGroom" style="color:var(--gold-lo)"></p>
+        <p class="person-name"><span class="prefix" data-t="groomPrefix"></span> <span data-t="groom"></span></p>
+        <p class="parents" data-t="groomParents"></p>
+      </div>
+      <p class="grace" data-t="grace"></p>
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="sec events-sec reveal" id="events">
+      <p class="label" data-t="dateRange"></p>
+      <h2 class="heading" data-t="celebrations"></h2>
+      <div class="events" id="eventList"></div>
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="sec venue reveal">
+      <p class="label" data-t="whereWeGather"></p>
+      <h2 class="heading" data-t="venue"></h2>
+      <div class="venues" id="venueList"></div>
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="sec share reveal">
+      <p class="label" data-t="spreadJoy"></p>
+      <h2 class="heading" data-t="shareInvite"></h2>
+      <div class="btn-row" style="margin-top:1rem">
+        <a class="btn btn--fill" id="waShare" target="_blank" rel="noopener"><span data-svg="wa"></span> <span data-t="whatsapp"></span></a>
+        <button class="btn btn--out" id="copyLink"><span data-svg="link"></span> <span data-t="copyLink"></span></button>
+      </div>
+    </section>
+
+    <section class="sec foot reveal">
+      <div class="diamond" data-svg="diamond"></div>
+      <p class="await" data-t="await"></p>
+      <p class="hosts" data-t="hosts"></p>
+      <p class="fam" data-t="family"></p>
+    </section>
+    <div class="foot-band" aria-hidden="true"></div>
+    <div class="scallop" data-svg="scallop"></div>
+  </div>
+</div>
+
+<!-- ============ FLOATING CONTROLS ============ -->
+<div class="fab-wrap" id="fabWrap">
+  <div style="position:relative">
+    <div class="lang-pop" id="langPop">
+      <button data-lang="en">English</button>
+      <button data-lang="te">తెలుగు</button>
+    </div>
+    <button class="fab" id="langFab"><span class="glyph" id="langGlyph">A</span></button>
+  </div>
+  <div style="position:relative">
+    <div class="theme-pop" id="themePop"></div>
+    <button class="fab" id="themeFab" title="theme"><span data-svg="palette"></span></button>
+  </div>
+  <button class="fab" id="musicFab" title="music"><span class="eq"><span></span><span></span><span></span><span></span></span></button>
+</div>
+
+<div class="toast" id="toast"></div>
+<!-- [[SLOT: background music]] -->
+<audio id="audio" src="audio/music.mp3" preload="auto"></audio>
+
+<script>
+/* ===================== CONFIG (content slots) ===================== */
+const CFG = {
+  muhurtham:'2026-11-21T10:30:00+05:30',   // [[SLOT: countdown target]]
+  tz:'Asia/Kolkata',
+  siteUrl: location.href.split('#')[0],
+  events:[   // each event has its own venue (map link) — [[SLOT: directions links]]
+    {id:'muhurtham',icon:'kalash', start:'20261121T103000', end:'20261121T120000', featured:true,  map:'https://maps.app.goo.gl/ZhxB6vqdUQ72ocSW8'},
+    {id:'reception',icon:'diya',   start:'20261122T190000', end:'20261122T230000', featured:false, map:'https://maps.app.goo.gl/rf86Wt3EkWabSs3M6'}
+  ]
+};
+
+/* ===================== i18n dictionary ===================== */
+const I18N = {
+  en:{
+    glyph:'A',
+    invocation:'॥ Sri Ganeshaya Namah ॥',
+    volume:'Turn your volume up',
+    open:'Open the invitation',
+    weddingInvitation:'Wedding Invitation',
+    nameA:'Rushikesh', nameB:'Lavika (Aparna)',
+    date:'Saturday, 21 November 2026',
+    venueShort:'Nizamabad & Sitarampur, Telangana',
+    cdLabel:'Muhurtham in',
+    days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
+    begun:'The celebrations have begun',
+    viewEvents:'View events', getDirections:'Get directions',
+    theCouple:'The Couple',
+    blessing:'With the blessings of the Almighty and our elders, we joyfully invite you and your family to the wedding of our beloved children.',
+    theBride:'The Bride', bridePrefix:'Chi. Sow.', bride:'Lavika (Aparna)', brideParents:'daughter of Smt. Pramila & Sri. Gangareddy',
+    theGroom:'The Groom', groomPrefix:'Chi.', groom:'Rushikesh', groomParents:'son of Smt. Rajitha & Sri. Venkat Ramana',
+    grace:'Kindly grace the occasion and bless the couple.',
+    dateRange:'21 – 22 November 2026', celebrations:'Celebrations',
+    whereWeGather:'Where we gather', venue:'Venues',
+    copyAddress:'Copy address',
+    spreadJoy:'Spread the joy', shareInvite:'Share the invitation', whatsapp:'WhatsApp', copyLink:'Copy link',
+    await:'Eagerly awaiting your gracious presence', hosts:'Families of Reddy & Peddireddy Nadipolla', family:'and well wishers',
+    addToCalendar:'Add to calendar', copied:'Address copied', linkCopied:'Link copied',
+    ev:{
+      muhurtham:{name:'Muhurtham', date:'Saturday, 21 November', time:'10:30 AM', venue:'Function Hall, Pacs Talla Rampoor', addr:'Tadla Rampur, Nizamabad, Telangana 503308', loc:'Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad, Telangana 503308'},
+      reception:{name:'Reception', date:'Sunday, 22 November', time:'7:00 PM', venue:'RBVRR Reddy Function Hall – Reddy Convention Center', addr:'Sitarampur, Telangana 505002', loc:'RBVRR Reddy Function Hall – Reddy Convention Center, Sitarampur, Telangana 505002'}
+    },
+    waMsg:u=>`You're invited to the wedding of Rushikesh & Lavika (Aparna). Muhurtham: Saturday, 21 November 2026, 10:30 AM at Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad. Reception: Sunday, 22 November 2026, 7:00 PM at RBVRR Reddy Function Hall, Sitarampur.\n${u}`
+  },
+  te:{
+    glyph:'అ',
+    invocation:'॥ శ్రీ గణేశాయ నమః ॥',
+    volume:'వాల్యూమ్ పెంచండి',
+    open:'ఆహ్వానాన్ని తెరవండి',
+    weddingInvitation:'శుభ వివాహ ఆహ్వానం',
+    nameA:'రుషికేశ్', nameB:'లవిక (అపర్ణ)',
+    date:'శనివారం, 21 నవంబర్ 2026',
+    venueShort:'నిజామాబాద్ & సీతారాంపూర్, తెలంగాణ',
+    cdLabel:'ముహూర్తానికి ఇంకా',
+    days:'రోజులు', hours:'గంటలు', minutes:'నిమిషాలు', seconds:'సెకన్లు',
+    begun:'వేడుకలు మొదలయ్యాయి',
+    viewEvents:'కార్యక్రమాలు', getDirections:'దారి చూపించు',
+    theCouple:'వధూవరులు',
+    blessing:'దైవ కటాక్షంతో, పెద్దల ఆశీస్సులతో, మా ప్రియమైన పిల్లల వివాహానికి మిమ్మల్ని సకుటుంబ సపరివార సమేతంగా సాదరంగా ఆహ్వానిస్తున్నాము.',
+    theBride:'వధువు', bridePrefix:'చి. సౌ.', bride:'లవిక (అపర్ణ)', brideParents:'శ్రీమతి ప్రమీల & శ్రీ గంగారెడ్డి గారి కుమార్తె',
+    theGroom:'వరుడు', groomPrefix:'చి.', groom:'రుషికేశ్', groomParents:'శ్రీమతి రాజిత & శ్రీ వెంకట రమణ గారి కుమారుడు',
+    grace:'దయచేసి వేడుకకు విచ్చేసి దంపతులను ఆశీర్వదించండి.',
+    dateRange:'21 – 22 నవంబర్ 2026', celebrations:'వేడుకలు',
+    whereWeGather:'మనం కలిసే చోటు', venue:'వేదికలు',
+    copyAddress:'చిరునామా కాపీ చేయి',
+    spreadJoy:'ఆనందాన్ని పంచండి', shareInvite:'ఆహ్వానాన్ని పంచుకోండి', whatsapp:'వాట్సాప్', copyLink:'లింక్ కాపీ చేయి',
+    await:'మీ రాక కోసం ఎదురుచూస్తున్నాము', hosts:'రెడ్డి & పెద్దిరెడ్డి నడిపొల్ల కుటుంబాలు', family:'మరియు శ్రేయోభిలాషులు',
+    addToCalendar:'క్యాలెండర్‌కు జోడించు', copied:'చిరునామా కాపీ అయింది', linkCopied:'లింక్ కాపీ అయింది',
+    ev:{
+      muhurtham:{name:'ముహూర్తం', date:'శనివారం, 21 నవంబర్', time:'ఉదయం 10:30', venue:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్', addr:'తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308', loc:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్, తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308'},
+      reception:{name:'రిసెప్షన్', date:'ఆదివారం, 22 నవంబర్', time:'సాయంత్రం 7:00', venue:'RBVRR రెడ్డి ఫంక్షన్ హాల్ – రెడ్డి కన్వెన్షన్ సెంటర్', addr:'సీతారాంపూర్, తెలంగాణ 505002', loc:'RBVRR రెడ్డి ఫంక్షన్ హాల్ – రెడ్డి కన్వెన్షన్ సెంటర్, సీతారాంపూర్, తెలంగాణ 505002'}
+    },
+    waMsg:u=>`రుషికేశ్ & లవిక (అపర్ణ) వివాహానికి మీకు ఆహ్వానం. ముహూర్తం: శనివారం, 21 నవంబర్ 2026, ఉదయం 10:30, ఫంక్షన్ హాల్, తల్లా రాంపూర్, నిజామాబాద్. రిసెప్షన్: ఆదివారం, 22 నవంబర్ 2026, సాయంత్రం 7:00, RBVRR రెడ్డి ఫంక్షన్ హాల్, సీతారాంపూర్.\n${u}`
+  }
+};
+
+/* ===================== inline SVG assets ===================== */
+const ICONS = {
+  cal:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>`,
+  pin:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>`,
+  copy:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>`,
+  link:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>`,
+  wa:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.2.4-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.3.1.4.2.5.3.1.2.1.7-.1 1.2Z"/></svg>`,
+  headphones:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="7" rx="1.5"/><rect x="17" y="13" width="4" height="7" rx="1.5"/></svg>`,
+  bowl:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M8 7c0-1.5 1-2 1.5-3M12 6c0-1.5 1-2 1.5-3M16 7c0-1.5 1-2 1.5-3"/></svg>`,
+  music:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M9 17.5V6l11-2v9.5"/></svg>`,
+  palette:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.8 1.4-1.5 0-.5-.3-.8-.6-1.2-.3-.3-.5-.7-.5-1.1 0-.8.7-1.4 1.6-1.4H15a6 6 0 0 0 6-6c0-4-4-6.8-9-6.8Z"/><circle cx="7.5" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="16.5" cy="11" r="1" fill="currentColor" stroke="none"/></svg>`,
+  // Muhurtham → kalash (sacred pot: coconut + mango leaves + pot)
+  kalash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.2" r="1.7"/><path d="M10.2 6C8 6 6.3 7 5.5 8.6M13.8 6c2.2 0 3.9 1 4.7 2.6"/><path d="M8.1 8.6h7.8l-.5 1.9a4 4 0 0 1-6.8 0L8.1 8.6Z"/><path d="M7.5 11.8C6.8 15.2 9.1 18.3 12 18.3s5.2-3.1 4.5-6.5"/></svg>`,
+  // Reception → diya (oil lamp with flame)
+  diya:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1 1-1.5 2-1.5 2.9a1.5 1.5 0 0 0 3 0C13.5 8 13 7 12 6Z"/><path d="M4 13.2c2.3 1.3 5.1 2 8 2s5.7-.7 8-2"/><path d="M5.3 12.6c.5 2.2 3.3 3.6 6.7 3.6s6.2-1.4 6.7-3.6c.2-.8-.5-1.2-1.4-1.2H6.7c-.9 0-1.6.4-1.4 1.2Z"/></svg>`,
+  emblem:`<svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="emg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--gold-hi)"/><stop offset=".55" style="stop-color:var(--gold)"/><stop offset="1" style="stop-color:var(--gold-lo)"/></linearGradient></defs><circle cx="50" cy="50" r="47" fill="none" stroke="url(#emg)" stroke-width="2.5"/><circle cx="50" cy="50" r="41" fill="none" style="stroke:var(--gold)" stroke-width="1" stroke-dasharray="2 3"/><path d="M50 20c-6 6-14 8-14 8 3 4 10 5 14 4 4 1 11 0 14-4 0 0-8-2-14-8Z" style="fill:var(--emerald-3)"/><path d="M42 30c-5 3-9 3-9 3 2 3 7 4 10 3" style="fill:var(--leaf)"/><path d="M58 30c5 3 9 3 9 3-2 3-7 4-10 3" style="fill:var(--leaf)"/><circle cx="50" cy="34" r="6" fill="url(#emg)"/><path d="M36 44c0-3 6-5 14-5s14 2 14 5c2 10-2 24-14 26-12-2-16-16-14-26Z" fill="url(#emg)"/><rect x="35" y="55" width="30" height="5" style="fill:var(--maroon)"/><path d="M50 62l2.5 4h-5Z" style="fill:var(--maroon)"/></svg>`,
+  toran:`<svg viewBox="0 0 560 70" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="560" height="10" style="fill:var(--emerald-3)"/><rect x="0" y="9" width="560" height="2" style="fill:var(--gold)"/>__TORAN_LEAVES__</svg>`,
+  diamond:`<svg viewBox="0 0 120 16" aria-hidden="true"><line x1="10" y1="8" x2="48" y2="8" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="30" cy="8" r="2" style="fill:var(--gold)"/><path d="M60 2l6 6-6 6-6-6Z" style="fill:var(--gold)"/><line x1="72" y1="8" x2="110" y2="8" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="90" cy="8" r="2" style="fill:var(--gold)"/></svg>`,
+  scallop:`<svg viewBox="0 0 560 22" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="560" height="22" style="fill:var(--emerald-2)"/><path d="M0 0 __SCALLOP_PTS__ Z" style="fill:var(--gold)" opacity=".9"/></svg>`,
+  mandala:`<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><defs><path id="mpt" d="M100 8 C116 42 116 66 100 92 C84 66 84 42 100 8Z"/></defs><g fill="currentColor" stroke="none">__MANDALA_PETALS__</g><circle cx="100" cy="100" r="34" fill="none"/><circle cx="100" cy="100" r="46" fill="none" stroke-dasharray="2 5"/><circle cx="100" cy="100" r="96" fill="none" stroke-dasharray="3 6"/></svg>`
+};
+// build repeating parts
+ICONS.mandala = ICONS.mandala.replace('__MANDALA_PETALS__',
+  Array.from({length:16}).map((_,i)=>`<use href="#mpt" transform="rotate(${i*22.5} 100 100)"/>`).join('')
+  + Array.from({length:16}).map((_,i)=>`<circle cx="100" cy="18" r="2.4" transform="rotate(${i*22.5+11.25} 100 100)"/>`).join(''));
+ICONS.toran = ICONS.toran.replace('__TORAN_LEAVES__',
+  Array.from({length:19}).map((_,i)=>{const x=i*30+8;return `<circle cx="${x}" cy="12" r="6" style="fill:var(--marigold)"/><circle cx="${x}" cy="12" r="2.4" style="fill:var(--gold)"/><path d="M${x} 20 q-9 18 0 34 q9-16 0-34Z" style="fill:var(--leaf)"/><path d="M${x} 22 v30" style="stroke:var(--emerald-3)" stroke-width="1"/>`;}).join('')
+  + Array.from({length:18}).map((_,i)=>`<circle cx="${i*30+23}" cy="12" r="4.5" style="fill:var(--marigold-hi)"/>`).join(''));
+ICONS.scallop = ICONS.scallop.replace('__SCALLOP_PTS__',
+  Array.from({length:40}).map((_,i)=>`L${i*14+7} 14 L${i*14+14} 0`).join(' '));
+
+/* ===================== app ===================== */
+(function(){
+  const $=(s,r=document)=>r.querySelector(s);
+  const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const enc=encodeURIComponent;
+  let lang=localStorage.getItem('lang')||'en';
+  const dict=()=>I18N[lang];
+
+  // fill inline SVGs once
+  // inject SVGs; give each a unique gradient id so duplicates (splash + hero emblem) don't collide
+  $$('[data-svg]').forEach((el,i)=>{const k=el.dataset.svg; if(ICONS[k]) el.innerHTML=ICONS[k].replace(/emg/g,'emg'+i);});
+
+  function calUrl(ev){const d=dict(),e=d.ev[ev.id];
+    const title=`${e.name} · ${d.nameA} & ${d.nameB}`;
+    const details=`${e.name} — ${d.nameA} & ${d.nameB}\n${e.date} · ${e.time}\n${e.loc}`;
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${enc(title)}&dates=${ev.start}/${ev.end}&ctz=${enc(CFG.tz)}&location=${enc(e.loc)}&details=${enc(details)}`;}
+
+  function renderEvents(){const d=dict();
+    $('#eventList').innerHTML=CFG.events.map(ev=>{const e=d.ev[ev.id];
+      return `<div class="event${ev.featured?' featured':''}"><div class="ev-badge">${ICONS[ev.icon]}</div>
+        <div style="flex:1"><div class="ev-name">${e.name}</div><div class="ev-date">${e.date}</div>
+        <div class="ev-time">${e.time}</div><div class="ev-loc">${e.loc}</div>
+        <a class="btn btn--out" style="padding:.5rem 1rem;font-size:.8rem" target="_blank" rel="noopener" href="${calUrl(ev)}">${ICONS.cal} ${d.addToCalendar}</a></div></div>`;
+    }).join('');}
+
+  function renderVenues(){const d=dict();
+    $('#venueList').innerHTML=CFG.events.map(ev=>{const e=d.ev[ev.id];
+      return `<div class="venue-card"><div class="venue-ev">${e.name}</div>
+        <div class="venue-name">${e.venue}</div><div class="venue-addr">${e.addr}</div>
+        <div class="btn-row">
+          <a class="btn btn--fill" target="_blank" rel="noopener" href="${ev.map}">${ICONS.pin} ${d.getDirections}</a>
+          <button class="btn btn--out btn-copy" data-addr="${e.venue}, ${e.addr}">${ICONS.copy} ${d.copyAddress}</button>
+        </div></div>`;
+    }).join('');
+    $$('#venueList .btn-copy').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.addr,dict().copied)));}
+
+  function setLang(l){lang=l;localStorage.setItem('lang',l);const d=dict();
+    document.documentElement.lang=(l==='en'?'en-IN':l);
+    $$('[data-t]').forEach(el=>{const k=el.dataset.t; if(d[k]!=null) el.textContent=d[k];});
+    $('#langGlyph').textContent=d.glyph;
+    $('#waShare').href=`https://wa.me/?text=${enc(d.waMsg(CFG.siteUrl))}`;
+    $$('#langPop button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+    renderEvents(); renderVenues();}
+
+  function tick(){const diff=new Date(CFG.muhurtham).getTime()-Date.now();
+    const set=(id,v)=>{const el=$(id); if(el) el.textContent=String(v).padStart(2,'0');};
+    if(diff<=0){const g=$('.cd-grid'); if(g) g.style.display='none'; const lb=$('.cd-label'); if(lb) lb.textContent=dict().begun; return;}
+    const s=Math.floor(diff/1000);
+    set('#cd-d',Math.floor(s/86400)); set('#cd-h',Math.floor(s%86400/3600));
+    set('#cd-m',Math.floor(s%3600/60)); set('#cd-s',s%60);}
+
+  let toastT;
+  function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1800);}
+  async function copy(x,m){try{await navigator.clipboard.writeText(x);toast(m);}catch(e){toast('—');}}
+
+  const audio=$('#audio'),musicFab=$('#musicFab');
+  function playMusic(){audio.volume=.85;audio.play().then(()=>musicFab.classList.add('playing')).catch(()=>{});}
+  musicFab.addEventListener('click',()=>{if(audio.paused){audio.play().then(()=>musicFab.classList.add('playing')).catch(()=>{});}else{audio.pause();musicFab.classList.remove('playing');}});
+
+  function revealObserve(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});$$('.reveal').forEach(el=>io.observe(el));}
+
+  // entry: selecting a language lands directly on the invitation
+  function enter(l){
+    setLang(l);
+    $('#overlay').classList.add('hide');
+    document.body.classList.remove('locked');
+    $('#fabWrap').classList.add('show');
+    playMusic();
+    setTimeout(()=>{$('#overlay').style.display='none';},650);
+    revealObserve();
+  }
+  $$('#splash .lang-btn').forEach(b=>b.addEventListener('click',()=>enter(b.dataset.lang)));
+
+  // floating language popover
+  $('#langFab').addEventListener('click',e=>{e.stopPropagation();$('#langPop').classList.toggle('show');});
+  document.addEventListener('click',()=>{$('#langPop').classList.remove('show');$('#themePop').classList.remove('show');});
+  $$('#langPop button').forEach(b=>b.addEventListener('click',()=>{setLang(b.dataset.lang);$('#langPop').classList.remove('show');}));
+
+  // theme picker (test/preview — swatches cycle the palettes; choice persists)
+  // themes mirror the four Canva 'Invitation' templates
+  const DEF='goldvintage';
+  const THEMES=[
+    {id:'goldvintage',name:'Gold Vintage · Emerald·Gold', sw:['#0E4A3A','#BE9A42','#F6F1E4']},
+    {id:'festive',    name:'Festive · Wine·Gold',         sw:['#64173B','#C9A24C','#F6EAD6']},
+    {id:'royalred',   name:'Royal Red · Red·Gold',        sw:['#7E1210','#C6973C','#F4E8D2']},
+    {id:'purplegold', name:'Purple & Golden · Plum·Gold', sw:['#5A2A5C','#B88A3C','#F7E3B0']}
+  ];
+  function applyTheme(t){
+    if(!THEMES.some(x=>x.id===t)) t=DEF;   // unknown/removed theme → default
+    document.documentElement.dataset.theme=t;
+    try{localStorage.setItem('theme',t);}catch(e){}
+    $$('#themePop button').forEach(b=>b.classList.toggle('active',b.dataset.theme===t));
+  }
+  $('#themePop').innerHTML=THEMES.map(t=>
+    `<button data-theme="${t.id}"><span class="sw">${t.sw.map(c=>`<i style="background:${c}"></i>`).join('')}</span>${t.name}</button>`).join('');
+  $$('#themePop button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();applyTheme(b.dataset.theme);$('#themePop').classList.remove('show');}));
+  $('#themeFab').addEventListener('click',e=>{e.stopPropagation();$('#themePop').classList.toggle('show');$('#langPop').classList.remove('show');});
+  applyTheme(localStorage.getItem('theme')||DEF);
+
+  // actions
+  $('#copyLink').addEventListener('click',()=>copy(CFG.siteUrl,dict().linkCopied));
+
+  // init
+  setLang(lang);
+  tick(); setInterval(tick,1000);
+  $$('#splash .lang-btn').forEach(b=>b.style.borderColor=b.dataset.lang===lang?'var(--gold-hi)':'');
+})();
+</script>
+</body>
+</html>
