@@ -381,11 +381,11 @@ a{color:inherit;text-decoration:none}
 <script>
 /* ===================== CONFIG (content slots) ===================== */
 const CFG = {
-  muhurtham:'2026-11-21T10:30:00+05:30',   // [[SLOT: countdown target]]
+  muhurtham:'2026-11-21T10:04:00+05:30',   // [[SLOT: countdown target]]
   tz:'Asia/Kolkata',
   siteUrl: location.href.split('#')[0],
   events:[   // each event has its own venue (map link) — [[SLOT: directions links]]
-    {id:'muhurtham',icon:'kalash', start:'20261121T103000', end:'20261121T120000', featured:true,  map:'https://maps.app.goo.gl/ZhxB6vqdUQ72ocSW8'},
+    {id:'muhurtham',icon:'kalash', start:'20261121T100400', end:'20261121T120000', featured:true,  map:'https://maps.app.goo.gl/ZhxB6vqdUQ72ocSW8'},
     {id:'reception',icon:'diya',   start:'20261122T190000', end:'20261122T230000', featured:false, map:'https://maps.app.goo.gl/rf86Wt3EkWabSs3M6'}
   ]
 };
@@ -411,13 +411,13 @@ const I18N = {
     whereWeGather:'Where we gather', venue:'Venues',
     copyAddress:'Copy address',
     spreadJoy:'Spread the joy', shareInvite:'Share the invitation', whatsapp:'WhatsApp', copyLink:'Copy link',
-    await:'Eagerly awaiting your gracious presence', hosts:'Rushikesh & Lavika', family:'and well wishers',
+    await:'Eagerly awaiting your gracious presence', hosts:'Rushikesh & Lavika', family:'with family and well wishers',
     copied:'Address copied', linkCopied:'Link copied',
     ev:{
-      muhurtham:{name:'Muhurtham', date:'Saturday, 21 November', time:'10:30 AM', venue:'Function Hall, Pacs Talla Rampoor', addr:'Tadla Rampur, Nizamabad, Telangana 503308', loc:'Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad, Telangana 503308'},
+      muhurtham:{name:'Muhurtham', date:'Saturday, 21 November', time:'10:04 AM', venue:'Function Hall, Pacs Talla Rampoor', addr:'Tadla Rampur, Nizamabad, Telangana 503308', loc:'Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad, Telangana 503308'},
       reception:{name:'Reception', date:'Sunday, 22 November', time:'7:00 PM', venue:'RBVRR Reddy Function Hall – Reddy Convention Center', addr:'Sitarampur, Telangana 505002', loc:'RBVRR Reddy Function Hall – Reddy Convention Center, Sitarampur, Telangana 505002'}
     },
-    waMsg:u=>`You're invited to the wedding of Rushikesh & Lavika. Muhurtham: Saturday, 21 November 2026, 10:30 AM at Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad. Reception: Sunday, 22 November 2026, 7:00 PM at RBVRR Reddy Function Hall, Sitarampur.\n${u}`
+    waMsg:u=>`You're invited to the wedding of Rushikesh & Lavika. Muhurtham: Saturday, 21 November 2026, 10:04 AM at Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad. Reception: Sunday, 22 November 2026, 7:00 PM at RBVRR Reddy Function Hall, Sitarampur.\n${u}`
   },
   te:{
     glyph:'అ',
@@ -438,13 +438,13 @@ const I18N = {
     whereWeGather:'మనం కలిసే చోటు', venue:'వేదికలు',
     copyAddress:'చిరునామా కాపీ చేయి',
     spreadJoy:'ఆనందాన్ని పంచండి', shareInvite:'ఆహ్వానాన్ని పంచుకోండి', whatsapp:'వాట్సాప్', copyLink:'లింక్ కాపీ చేయి',
-    await:'మీ రాక కోసం ఎదురుచూస్తున్నాము', hosts:'రుషికేశ్ & లవిక', family:'మరియు శ్రేయోభిలాషులు',
+    await:'మీ రాక కోసం ఎదురుచూస్తున్నాము', hosts:'రుషికేశ్ & లవిక', family:'కుటుంబ సభ్యులు మరియు శ్రేయోభిలాషులతో',
     copied:'చిరునామా కాపీ అయింది', linkCopied:'లింక్ కాపీ అయింది',
     ev:{
-      muhurtham:{name:'ముహూర్తం', date:'శనివారం, 21 నవంబర్', time:'ఉదయం 10:30', venue:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్', addr:'తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308', loc:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్, తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308'},
+      muhurtham:{name:'ముహూర్తం', date:'శనివారం, 21 నవంబర్', time:'ఉదయం 10:04', venue:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్', addr:'తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308', loc:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్, తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308'},
       reception:{name:'రిసెప్షన్', date:'ఆదివారం, 22 నవంబర్', time:'సాయంత్రం 7:00', venue:'RBVRR రెడ్డి ఫంక్షన్ హాల్ – రెడ్డి కన్వెన్షన్ సెంటర్', addr:'సీతారాంపూర్, తెలంగాణ 505002', loc:'RBVRR రెడ్డి ఫంక్షన్ హాల్ – రెడ్డి కన్వెన్షన్ సెంటర్, సీతారాంపూర్, తెలంగాణ 505002'}
     },
-    waMsg:u=>`రుషికేశ్ & లవిక వివాహానికి మీకు ఆహ్వానం. ముహూర్తం: శనివారం, 21 నవంబర్ 2026, ఉదయం 10:30, ఫంక్షన్ హాల్, తల్లా రాంపూర్, నిజామాబాద్. రిసెప్షన్: ఆదివారం, 22 నవంబర్ 2026, సాయంత్రం 7:00, RBVRR రెడ్డి ఫంక్షన్ హాల్, సీతారాంపూర్.\n${u}`
+    waMsg:u=>`రుషికేశ్ & లవిక వివాహానికి మీకు ఆహ్వానం. ముహూర్తం: శనివారం, 21 నవంబర్ 2026, ఉదయం 10:04, ఫంక్షన్ హాల్, తల్లా రాంపూర్, నిజామాబాద్. రిసెప్షన్: ఆదివారం, 22 నవంబర్ 2026, సాయంత్రం 7:00, RBVRR రెడ్డి ఫంక్షన్ హాల్, సీతారాంపూర్.\n${u}`
   }
 };
 
