@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <!-- [[SLOT: title]] -->
-<title>Rushikesh & Lavika (Aparna) Wedding</title>
-<meta name="description" content="You're invited to the wedding of Rushikesh & Lavika (Aparna).">
+<title>Rushikesh & Lavika Wedding</title>
+<meta name="description" content="You're invited to the wedding of Rushikesh & Lavika.">
 <!-- Open Graph (for WhatsApp/link previews) — [[SLOT]] -->
-<meta property="og:title" content="Rushikesh & Lavika (Aparna) Wedding">
-<meta property="og:description" content="Join us to bless the couple.">
+<meta property="og:title" content="Rushikesh & Lavika Wedding">
+<meta property="og:description" content="Join us to celebrate our wedding.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,7 +135,6 @@ a{color:inherit;text-decoration:none}
 
 .hero .names{margin:.6rem 0 .3rem}
 .hero .date{font-family:var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--date-c);font-size:1.05rem;margin-top:.8rem}
-.hero .venue-line{color:var(--text-soft);margin-top:.3rem}
 .date{font-family:var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--date-c)}
 
 .countdown{background:linear-gradient(180deg,var(--emerald-3),var(--emerald-2));border:1.5px solid var(--gold);
@@ -166,7 +165,7 @@ a{color:inherit;text-decoration:none}
 .ev-name{font-family:var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--head);font-size:1.15rem}
 .ev-date{color:var(--text);font-size:1rem;margin-top:.15rem}
 .ev-time{font-weight:700;color:var(--date-c);font-size:1.3rem}
-.ev-loc{color:var(--text-soft);font-size:.95rem;margin:.15rem 0 .6rem}
+.ev-loc{color:var(--text-soft);font-size:.95rem;margin:.15rem 0 0}
 
 .venues{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.4rem}
 .venue-card{border:1px solid rgba(138,104,35,.45);border-radius:12px;padding:1.3rem 1.2rem;background:var(--card-bg)}
@@ -290,7 +289,6 @@ a{color:inherit;text-decoration:none}
         <span class="name" data-t="nameA"></span><br><span class="amp-big">&amp;</span><br><span class="name" data-t="nameB"></span>
       </p>
       <p class="date" data-t="date"></p>
-      <p class="venue-line" data-t="venueShort"></p>
 
       <div class="countdown" id="countdown">
         <div class="cd-label" data-t="cdLabel"></div>
@@ -313,13 +311,11 @@ a{color:inherit;text-decoration:none}
       <div class="couple-block">
         <p class="label" data-t="theBride" style="color:var(--gold-lo)"></p>
         <p class="person-name"><span class="prefix" data-t="bridePrefix"></span> <span data-t="bride"></span></p>
-        <p class="parents" data-t="brideParents"></p>
       </div>
       <div class="amp-div">&amp;</div>
       <div class="couple-block">
         <p class="label" data-t="theGroom" style="color:var(--gold-lo)"></p>
         <p class="person-name"><span class="prefix" data-t="groomPrefix"></span> <span data-t="groom"></span></p>
-        <p class="parents" data-t="groomParents"></p>
       </div>
       <p class="grace" data-t="grace"></p>
     </section>
@@ -398,65 +394,62 @@ const CFG = {
 const I18N = {
   en:{
     glyph:'A',
-    invocation:'॥ Sri Ganeshaya Namah ॥',
+    invocation:'॥ Sri Ganeshaya Namaha ॥',
     weddingInvitation:'Wedding Invitation',
-    nameA:'Rushikesh', nameB:'Lavika (Aparna)',
+    nameA:'Rushikesh', nameB:'Lavika',
     date:'Saturday, 21 November 2026',
-    venueShort:'Nizamabad & Sitarampur, Telangana',
     cdLabel:'Muhurtham in',
     days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
     begun:'The celebrations have begun',
     getDirections:'Get directions',
     theCouple:'The Couple',
-    blessing:'With the blessings of the Almighty and our elders, we joyfully invite you and your family to the wedding of our beloved children.',
-    theBride:'The Bride', bridePrefix:'Chi. Sow.', bride:'Lavika (Aparna)', brideParents:'daughter of Smt. Pramila & Sri. Gangareddy',
-    theGroom:'The Groom', groomPrefix:'Chi.', groom:'Rushikesh', groomParents:'son of Smt. Rajitha & Sri. Venkat Ramana',
-    grace:'Kindly grace the occasion and bless the couple.',
+    blessing:'With the blessings of the Almighty and our elders, we joyfully invite you and your family to share in the celebration of our wedding.',
+    theBride:'The Bride', bridePrefix:'Chi. Sow.', bride:'Lavika',
+    theGroom:'The Groom', groomPrefix:'Chi.', groom:'Rushikesh',
+    grace:'Kindly grace the occasion and bless us with your love.',
     dateRange:'21 – 22 November 2026', celebrations:'Celebrations',
     whereWeGather:'Where we gather', venue:'Venues',
     copyAddress:'Copy address',
     spreadJoy:'Spread the joy', shareInvite:'Share the invitation', whatsapp:'WhatsApp', copyLink:'Copy link',
-    await:'Eagerly awaiting your gracious presence', hosts:'Families of Reddy & Peddireddy Nadipolla', family:'and well wishers',
-    addToCalendar:'Add to calendar', copied:'Address copied', linkCopied:'Link copied',
+    await:'Eagerly awaiting your gracious presence', hosts:'Rushikesh & Lavika', family:'and well wishers',
+    copied:'Address copied', linkCopied:'Link copied',
     ev:{
       muhurtham:{name:'Muhurtham', date:'Saturday, 21 November', time:'10:30 AM', venue:'Function Hall, Pacs Talla Rampoor', addr:'Tadla Rampur, Nizamabad, Telangana 503308', loc:'Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad, Telangana 503308'},
       reception:{name:'Reception', date:'Sunday, 22 November', time:'7:00 PM', venue:'RBVRR Reddy Function Hall – Reddy Convention Center', addr:'Sitarampur, Telangana 505002', loc:'RBVRR Reddy Function Hall – Reddy Convention Center, Sitarampur, Telangana 505002'}
     },
-    waMsg:u=>`You're invited to the wedding of Rushikesh & Lavika (Aparna). Muhurtham: Saturday, 21 November 2026, 10:30 AM at Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad. Reception: Sunday, 22 November 2026, 7:00 PM at RBVRR Reddy Function Hall, Sitarampur.\n${u}`
+    waMsg:u=>`You're invited to the wedding of Rushikesh & Lavika. Muhurtham: Saturday, 21 November 2026, 10:30 AM at Function Hall, Pacs Talla Rampoor, Tadla Rampur, Nizamabad. Reception: Sunday, 22 November 2026, 7:00 PM at RBVRR Reddy Function Hall, Sitarampur.\n${u}`
   },
   te:{
     glyph:'అ',
     invocation:'॥ శ్రీ గణేశాయ నమః ॥',
     weddingInvitation:'శుభ వివాహ ఆహ్వానం',
-    nameA:'రుషికేశ్', nameB:'లవిక (అపర్ణ)',
+    nameA:'రుషికేశ్', nameB:'లవిక',
     date:'శనివారం, 21 నవంబర్ 2026',
-    venueShort:'నిజామాబాద్ & సీతారాంపూర్, తెలంగాణ',
     cdLabel:'ముహూర్తానికి ఇంకా',
     days:'రోజులు', hours:'గంటలు', minutes:'నిమిషాలు', seconds:'సెకన్లు',
     begun:'వేడుకలు మొదలయ్యాయి',
     getDirections:'దారి చూపించు',
     theCouple:'వధూవరులు',
-    blessing:'దైవ కటాక్షంతో, పెద్దల ఆశీస్సులతో, మా ప్రియమైన పిల్లల వివాహానికి మిమ్మల్ని సకుటుంబ సపరివార సమేతంగా సాదరంగా ఆహ్వానిస్తున్నాము.',
-    theBride:'వధువు', bridePrefix:'చి. సౌ.', bride:'లవిక (అపర్ణ)', brideParents:'శ్రీమతి ప్రమీల & శ్రీ గంగారెడ్డి గారి కుమార్తె',
-    theGroom:'వరుడు', groomPrefix:'చి.', groom:'రుషికేశ్', groomParents:'శ్రీమతి రాజిత & శ్రీ వెంకట రమణ గారి కుమారుడు',
-    grace:'దయచేసి వేడుకకు విచ్చేసి దంపతులను ఆశీర్వదించండి.',
+    blessing:'దైవ కటాక్షంతో, పెద్దల ఆశీస్సులతో, మా వివాహ వేడుకలో పాల్గొనమని మిమ్మల్ని సకుటుంబ సపరివార సమేతంగా సాదరంగా ఆహ్వానిస్తున్నాము.',
+    theBride:'వధువు', bridePrefix:'చి. సౌ.', bride:'లవిక',
+    theGroom:'వరుడు', groomPrefix:'చి.', groom:'రుషికేశ్',
+    grace:'దయచేసి వేడుకకు విచ్చేసి మమ్మల్ని ఆశీర్వదించండి.',
     dateRange:'21 – 22 నవంబర్ 2026', celebrations:'వేడుకలు',
     whereWeGather:'మనం కలిసే చోటు', venue:'వేదికలు',
     copyAddress:'చిరునామా కాపీ చేయి',
     spreadJoy:'ఆనందాన్ని పంచండి', shareInvite:'ఆహ్వానాన్ని పంచుకోండి', whatsapp:'వాట్సాప్', copyLink:'లింక్ కాపీ చేయి',
-    await:'మీ రాక కోసం ఎదురుచూస్తున్నాము', hosts:'రెడ్డి & పెద్దిరెడ్డి నడిపొల్ల కుటుంబాలు', family:'మరియు శ్రేయోభిలాషులు',
-    addToCalendar:'క్యాలెండర్‌కు జోడించు', copied:'చిరునామా కాపీ అయింది', linkCopied:'లింక్ కాపీ అయింది',
+    await:'మీ రాక కోసం ఎదురుచూస్తున్నాము', hosts:'రుషికేశ్ & లవిక', family:'మరియు శ్రేయోభిలాషులు',
+    copied:'చిరునామా కాపీ అయింది', linkCopied:'లింక్ కాపీ అయింది',
     ev:{
       muhurtham:{name:'ముహూర్తం', date:'శనివారం, 21 నవంబర్', time:'ఉదయం 10:30', venue:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్', addr:'తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308', loc:'ఫంక్షన్ హాల్, పాక్స్ తల్లా రాంపూర్, తడ్లా రాంపూర్, నిజామాబాద్, తెలంగాణ 503308'},
       reception:{name:'రిసెప్షన్', date:'ఆదివారం, 22 నవంబర్', time:'సాయంత్రం 7:00', venue:'RBVRR రెడ్డి ఫంక్షన్ హాల్ – రెడ్డి కన్వెన్షన్ సెంటర్', addr:'సీతారాంపూర్, తెలంగాణ 505002', loc:'RBVRR రెడ్డి ఫంక్షన్ హాల్ – రెడ్డి కన్వెన్షన్ సెంటర్, సీతారాంపూర్, తెలంగాణ 505002'}
     },
-    waMsg:u=>`రుషికేశ్ & లవిక (అపర్ణ) వివాహానికి మీకు ఆహ్వానం. ముహూర్తం: శనివారం, 21 నవంబర్ 2026, ఉదయం 10:30, ఫంక్షన్ హాల్, తల్లా రాంపూర్, నిజామాబాద్. రిసెప్షన్: ఆదివారం, 22 నవంబర్ 2026, సాయంత్రం 7:00, RBVRR రెడ్డి ఫంక్షన్ హాల్, సీతారాంపూర్.\n${u}`
+    waMsg:u=>`రుషికేశ్ & లవిక వివాహానికి మీకు ఆహ్వానం. ముహూర్తం: శనివారం, 21 నవంబర్ 2026, ఉదయం 10:30, ఫంక్షన్ హాల్, తల్లా రాంపూర్, నిజామాబాద్. రిసెప్షన్: ఆదివారం, 22 నవంబర్ 2026, సాయంత్రం 7:00, RBVRR రెడ్డి ఫంక్షన్ హాల్, సీతారాంపూర్.\n${u}`
   }
 };
 
 /* ===================== inline SVG assets ===================== */
 const ICONS = {
-  cal:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>`,
   pin:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>`,
   copy:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>`,
   link:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>`,
@@ -493,17 +486,11 @@ ICONS.scallop = ICONS.scallop.replace('__SCALLOP_PTS__',
   // inject SVGs; give each a unique gradient id so any duplicated SVG's gradients never collide
   $$('[data-svg]').forEach((el,i)=>{const k=el.dataset.svg; if(ICONS[k]) el.innerHTML=ICONS[k].replace(/emg/g,'emg'+i);});
 
-  function calUrl(ev){const d=dict(),e=d.ev[ev.id];
-    const title=`${e.name} · ${d.nameA} & ${d.nameB}`;
-    const details=`${e.name} — ${d.nameA} & ${d.nameB}\n${e.date} · ${e.time}\n${e.loc}`;
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${enc(title)}&dates=${ev.start}/${ev.end}&ctz=${enc(CFG.tz)}&location=${enc(e.loc)}&details=${enc(details)}`;}
-
   function renderEvents(){const d=dict();
     $('#eventList').innerHTML=CFG.events.map(ev=>{const e=d.ev[ev.id];
       return `<div class="event${ev.featured?' featured':''}"><div class="ev-badge">${ICONS[ev.icon]}</div>
         <div style="flex:1"><div class="ev-name">${e.name}</div><div class="ev-date">${e.date}</div>
-        <div class="ev-time">${e.time}</div><div class="ev-loc">${e.loc}</div>
-        <a class="btn btn--out" style="padding:.5rem 1rem;font-size:.8rem" target="_blank" rel="noopener" href="${calUrl(ev)}">${ICONS.cal} ${d.addToCalendar}</a></div></div>`;
+        <div class="ev-time">${e.time}</div><div class="ev-loc">${e.loc}</div></div></div>`;
     }).join('');}
 
   function renderVenues(){const d=dict();
