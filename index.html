@@ -367,10 +367,6 @@ a{color:inherit;text-decoration:none}
     </div>
     <button class="fab" id="langFab"><span class="glyph" id="langGlyph">A</span></button>
   </div>
-  <div style="position:relative">
-    <div class="theme-pop" id="themePop"></div>
-    <button class="fab" id="themeFab" title="theme"><span data-svg="palette"></span></button>
-  </div>
   <button class="fab" id="musicFab" title="music"><span class="eq"><span></span><span></span><span></span><span></span></span></button>
 </div>
 
@@ -543,29 +539,11 @@ ICONS.scallop = ICONS.scallop.replace('__SCALLOP_PTS__',
 
   // floating language popover
   $('#langFab').addEventListener('click',e=>{e.stopPropagation();$('#langPop').classList.toggle('show');});
-  document.addEventListener('click',()=>{$('#langPop').classList.remove('show');$('#themePop').classList.remove('show');});
+  document.addEventListener('click',()=>{$('#langPop').classList.remove('show');});
   $$('#langPop button').forEach(b=>b.addEventListener('click',()=>{setLang(b.dataset.lang);$('#langPop').classList.remove('show');}));
 
-  // theme picker (test/preview — swatches cycle the palettes; choice persists)
-  // themes mirror the four Canva 'Invitation' templates
-  const DEF='goldvintage';
-  const THEMES=[
-    {id:'goldvintage',name:'Gold Vintage · Emerald·Gold', sw:['#0E4A3A','#BE9A42','#F6F1E4']},
-    {id:'festive',    name:'Festive · Wine·Gold',         sw:['#64173B','#C9A24C','#F6EAD6']},
-    {id:'royalred',   name:'Royal Red · Red·Gold',        sw:['#7E1210','#C6973C','#F4E8D2']},
-    {id:'purplegold', name:'Purple & Golden · Plum·Gold', sw:['#5A2A5C','#B88A3C','#F7E3B0']}
-  ];
-  function applyTheme(t){
-    if(!THEMES.some(x=>x.id===t)) t=DEF;   // unknown/removed theme → default
-    document.documentElement.dataset.theme=t;
-    try{localStorage.setItem('theme',t);}catch(e){}
-    $$('#themePop button').forEach(b=>b.classList.toggle('active',b.dataset.theme===t));
-  }
-  $('#themePop').innerHTML=THEMES.map(t=>
-    `<button data-theme="${t.id}"><span class="sw">${t.sw.map(c=>`<i style="background:${c}"></i>`).join('')}</span>${t.name}</button>`).join('');
-  $$('#themePop button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();applyTheme(b.dataset.theme);$('#themePop').classList.remove('show');}));
-  $('#themeFab').addEventListener('click',e=>{e.stopPropagation();$('#themePop').classList.toggle('show');$('#langPop').classList.remove('show');});
-  applyTheme(localStorage.getItem('theme')||DEF);
+  // single theme — Gold Vintage (Emerald & Gold)
+  document.documentElement.dataset.theme='goldvintage';
 
   // actions
   $('#copyLink').addEventListener('click',()=>copy(CFG.siteUrl,dict().linkCopied));
