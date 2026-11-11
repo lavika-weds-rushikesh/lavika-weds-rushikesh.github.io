@@ -60,25 +60,9 @@ html[lang="te"] .heading{line-height:1.35}
   --ink:       var(--ink-base);
   --ink-soft:  color-mix(in srgb, var(--ink-base) 66%, var(--bg));
 }
-/* Themes derived from the four Canva 'Invitation' templates — colours only; content & layout unchanged.
+/* Single theme — Gold Vintage (emerald + gold), from the Canva 'Invitation' template.
    --primary = dominant colour, --accent = gold, --bg = paper, --ink-base = text, --deep = dates / toran flowers. */
 :root[data-theme="goldvintage"]{ --primary:#0E4A3A; --accent:#BE9A42; --bg:#F6F1E4; --ink-base:#23281F; --deep:#0E4A3A; } /* Gold Vintage Indian: emerald + gold */
-:root[data-theme="festive"]    { --primary:#64173B; --accent:#C9A24C; --bg:#F6EAD6; --ink-base:#2E1020; --deep:#64173B; } /* Purple & Yellow Festive: wine + gold */
-:root[data-theme="royalred"]   { --primary:#7E1210; --accent:#C6973C; --bg:#F4E8D2; --ink-base:#2A0E0C; --deep:#7E1210; } /* Gold & Red Royal: deep red + gold */
-:root[data-theme="purplegold"] { --primary:#5A2A5C; --accent:#B88A3C; --bg:#F7E3B0; --ink-base:#2E1730; --deep:#5A2A5C; } /* Purple & Golden: aubergine + gold */
-
-/* Dark themes: paper itself is the deep colour, text goes gold/cream (mirrors the templates' inner pages).
-   Panels (--emerald-2/-3) are set darker than the paper so the countdown/featured cards still read. */
-:root[data-theme="royalred"]{
-  --paper-1:#7c1210; --paper-2:#5c0d0b; --card-bg:#7f1715;
-  --text:#f2e6c8; --text-soft:#dcc088; --head:#edc65c; --date-c:#eccf7a;
-  --emerald-2:#4c0c0a; --emerald-3:#660f0d; --gold-hi:#f3dd9b;
-}
-:root[data-theme="purplegold"]{
-  --paper-1:#4f264d; --paper-2:#3a1939; --card-bg:#582b56;
-  --text:#f0e4c9; --text-soft:#d4bb8e; --head:#e8c560; --date-c:#e8ca78;
-  --emerald-2:#341832; --emerald-3:#4a2447; --gold-hi:#f3dd9b;
-}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -193,30 +177,10 @@ a{color:inherit;text-decoration:none}
   background-size:contain;background-repeat:no-repeat;pointer-events:none;z-index:4;opacity:.96}
 .paper::before{left:7px;background-position:top left}
 .paper::after{right:7px;transform:scaleX(-1)}
-:root[data-theme="goldvintage"] .paper::before,:root[data-theme="goldvintage"] .paper::after{background-image:url('images/orn-corner-gold.png')}
-:root[data-theme="festive"]     .paper::before,:root[data-theme="festive"]     .paper::after{background-image:url('images/orn-corner-festive.png')}
-:root[data-theme="royalred"]    .paper::before,:root[data-theme="royalred"]    .paper::after{background-image:url('images/orn-corner-red.png')}
-/* Purple & Golden uses a gold drape across the top instead of corner flourishes */
-:root[data-theme="purplegold"] .paper::before{left:0;right:0;top:0;width:100%;height:86px;background-image:url('images/drape-purple.png');background-position:top center;background-size:cover}
-:root[data-theme="purplegold"] .paper::after{display:none}
-/* hanging lanterns (Purple & Golden only — its inner page shows them) */
-.lantern{position:absolute;top:2px;width:42px;height:150px;z-index:3;pointer-events:none;display:none;
-  background:url('images/lantern-purple.png') top center/contain no-repeat}
-.lantern-l{left:16px}.lantern-r{right:16px}
-:root[data-theme="purplegold"] .lantern{display:block}
-/* Festive: wine paper with a cream temple-arch content panel (matches the template's inner page) */
-:root[data-theme="festive"] .paper{background:linear-gradient(180deg,#6a1a3f,#58122f);border:5px solid #4c0e28}
-:root[data-theme="festive"] .toran{display:none}
+.paper::before,.paper::after{background-image:url('images/orn-corner-gold.png')}
 .sec,.rule{position:relative;z-index:1}
-.arch-panel,.arch-cap{display:none}
-:root[data-theme="festive"] .arch-panel{display:block;position:absolute;left:15px;right:15px;top:24px;bottom:13px;
-  background:linear-gradient(180deg,var(--ivory),var(--ivory-2));border:1.5px solid var(--gold-lo);border-top:none;z-index:0}
-:root[data-theme="festive"] .arch-cap{display:block;position:absolute;left:15px;right:15px;top:24px;height:120px;z-index:0;pointer-events:none}
-.arch-cap svg{width:100%;height:100%;display:block}
-/* decorative foot band (Gold Vintage & Royal Red) */
-.foot-band{height:68px;background-size:cover;background-position:center;display:none}
-:root[data-theme="goldvintage"] .foot-band{background-image:url('images/band-gold.jpg');display:block}
-:root[data-theme="royalred"]    .foot-band{background-image:url('images/band-red.jpg');display:block}
+/* decorative foot band */
+.foot-band{height:68px;background-size:cover;background-position:center;background-image:url('images/band-gold.jpg')}
 
 .fab-wrap{position:fixed;right:calc(1rem + env(safe-area-inset-right));bottom:calc(1rem + env(safe-area-inset-bottom));
   z-index:40;display:none;gap:.7rem;align-items:flex-end}
@@ -283,14 +247,10 @@ a{color:inherit;text-decoration:none}
 <!-- ============ MAIN INVITATION ============ -->
 <div class="wrap">
   <div class="paper">
-    <div class="arch-cap" aria-hidden="true"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M0 40 L0 0 L100 0 L100 40 Q74 40 50 3 Q26 40 0 40 Z" fill="#6a1a3f"/><path d="M0 40 Q26 40 50 3 Q74 40 100 40" fill="none" stroke="var(--gold-lo)" stroke-width="0.7"/></svg></div>
-    <div class="arch-panel" aria-hidden="true"></div>
     <div class="toran" data-svg="toran"></div>
 
     <section class="sec hero reveal">
       <div class="mandala" data-svg="mandala" aria-hidden="true"></div>
-      <div class="lantern lantern-l" aria-hidden="true"></div>
-      <div class="lantern lantern-r" aria-hidden="true"></div>
       <div class="hero-inner">
       <div class="om-top" aria-hidden="true"></div>
       <p class="invocation" data-t="invocation"></p>
